@@ -304,6 +304,10 @@ migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 
 Done, snapshot loaded.
 
+**Logs & Diagrams:**
+- [Normal Snapshot Loading Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NormalSnapTemp.log)
+- [Normal Snapshot Loading Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NormalSnapshotLoading.svg)
+
 ### Mapped-RAM Snapshot (without multifd)
 
 **Step 1:** Start QEMU:
@@ -338,6 +342,10 @@ migrate_set_compatibility multifd off
 migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 ```
 
+**Logs & Diagrams:**
+- [Mapped-RAM Snapshot Loading Log (No Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NoMultifdSnap.log)
+- [Mapped-RAM Snapshot Loading Flow Diagram (No Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NoMultifdSnapshotLoading.svg)
+
 ### Mapped-RAM Snapshot (with multifd)
 
 **Step 1:** Start QEMU:
@@ -371,6 +379,10 @@ migrate_set_compatibility multifd on
 ```
 migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 ```
+
+**Logs & Diagrams:**
+- [Mapped-RAM Snapshot Loading Log (With Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/WithMultifdSnap.log)
+- [Mapped-RAM Snapshot Loading Flow Diagram (With Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/WithMultifdSnapshotLoading.svg)
 
 
 ## Benchmarking Results
@@ -488,6 +500,11 @@ You'll see the source keep printing while the destination screen stays black. On
 - [Precopy Live Migration Failed (Network Too Slow)](https://youtu.be/XZrDKEk64Qc)
 - [Precopy Live Migration with Downtime Limit](https://youtu.be/y0oNx5YOHOE)
 
+**Logs & Diagrams:**
+- [Precopy Migration - Source Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/source_precopy.log)
+- [Precopy Migration - Destination Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/destination_precopy.log)
+- [Precopy Migration Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/precopyMigration.svg)
+
 ### Approach 2: Postcopy Migration
 
 **How it works:** This is where the magic happens. The source pauses immediately, CPU state moves to the destination, and the destination wakes up with zero RAM. When the destination tries to read a memory page, it pulls it from the source on-demand.
@@ -508,6 +525,11 @@ migrate_start_postcopy
 ```
 
 **Watch it in action:** [Postcopy Live Migration](https://youtu.be/qoGIOb3z9Ic)
+
+**Logs & Diagrams:**
+- [Postcopy Migration - Source Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/source_postcopy.log)
+- [Postcopy Migration - Destination Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/destination_postcopy.log)
+- [Postcopy Migration Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/postcopyMigration.svg)
 
 ### What This All Means
 
