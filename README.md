@@ -304,9 +304,10 @@ migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 
 Done, snapshot loaded.
 
-**Logs & Diagrams:**
+![Normal Snapshot Loading Flow](https://raw.githubusercontent.com/vididvidid/QEMU-TODO/main/Snapshot/NormalSnapshotLoading.svg)
+
+**Log Details:**
 - [Normal Snapshot Loading Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NormalSnapTemp.log)
-- [Normal Snapshot Loading Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NormalSnapshotLoading.svg)
 
 ### Mapped-RAM Snapshot (without multifd)
 
@@ -342,9 +343,10 @@ migrate_set_compatibility multifd off
 migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 ```
 
-**Logs & Diagrams:**
+![Mapped-RAM Snapshot Loading (No Multifd) Flow](https://raw.githubusercontent.com/vididvidid/QEMU-TODO/main/Snapshot/NoMultifdSnapshotLoading.svg)
+
+**Log Details:**
 - [Mapped-RAM Snapshot Loading Log (No Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NoMultifdSnap.log)
-- [Mapped-RAM Snapshot Loading Flow Diagram (No Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/NoMultifdSnapshotLoading.svg)
 
 ### Mapped-RAM Snapshot (with multifd)
 
@@ -380,10 +382,10 @@ migrate_set_compatibility multifd on
 migrate_incoming "file:/home/kali/yoursnapshotname.bin"
 ```
 
-**Logs & Diagrams:**
-- [Mapped-RAM Snapshot Loading Log (With Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/WithMultifdSnap.log)
-- [Mapped-RAM Snapshot Loading Flow Diagram (With Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/WithMultifdSnapshotLoading.svg)
+![Mapped-RAM Snapshot Loading (With Multifd) Flow](https://raw.githubusercontent.com/vididvidid/QEMU-TODO/main/Snapshot/WithMultifdSnapshotLoading.svg)
 
+**Log Details:**
+- [Mapped-RAM Snapshot Loading Log (With Multifd)](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/WithMultifdSnap.log)
 
 ## Benchmarking Results
 
@@ -500,10 +502,11 @@ You'll see the source keep printing while the destination screen stays black. On
 - [Precopy Live Migration Failed (Network Too Slow)](https://youtu.be/XZrDKEk64Qc)
 - [Precopy Live Migration with Downtime Limit](https://youtu.be/y0oNx5YOHOE)
 
-**Logs & Diagrams:**
+![Precopy Migration Flow](https://raw.githubusercontent.com/vididvidid/QEMU-TODO/main/Migration/precopyMigration.svg)
+
+**Log Details:**
 - [Precopy Migration - Source Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/source_precopy.log)
 - [Precopy Migration - Destination Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/destination_precopy.log)
-- [Precopy Migration Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/precopyMigration.svg)
 
 ### Approach 2: Postcopy Migration
 
@@ -526,10 +529,11 @@ migrate_start_postcopy
 
 **Watch it in action:** [Postcopy Live Migration](https://youtu.be/qoGIOb3z9Ic)
 
-**Logs & Diagrams:**
+![Postcopy Migration Flow](https://raw.githubusercontent.com/vididvidid/QEMU-TODO/main/Migration/postcopyMigration.svg)
+
+**Log Details:**
 - [Postcopy Migration - Source Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/source_postcopy.log)
 - [Postcopy Migration - Destination Log](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/destination_postcopy.log)
-- [Postcopy Migration Flow Diagram](https://github.com/vididvidid/QEMU-TODO/blob/main/Migration/postcopyMigration.svg)
 
 ### What This All Means
 
