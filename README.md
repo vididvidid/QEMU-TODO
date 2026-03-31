@@ -400,6 +400,9 @@ The benchmarking was done manually with VNC - I'd visually watch the screen load
 
 You can find the benchmark script in the repo and there's also a YouTube video where I recorded the whole process.
 
+**Tools:**
+- [benchmark.py](https://github.com/vididvidid/QEMU-TODO/blob/main/utils/utils/benchmark.py) - Script to run and measure snapshot performance
+
 ### Test 1: Normal Snapshot
 ```
 Mean                  : 18.459 s
@@ -410,6 +413,8 @@ Min / Max             : 17.797 s / 20.098 s
 Coefficient of Var    : 5.20%
 Successful runs       : 5/5
 ```
+
+![Normal Snapshot Benchmark](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/BenchmarkNormalSnapshotLoading.png)
 
 ### Test 2: Mapped-RAM (without multifd)
 ```
@@ -422,6 +427,8 @@ Coefficient of Var    : 1.69%
 Successful runs       : 5/5
 ```
 
+![Mapped-RAM Snapshot Without Multifd Benchmark](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/BenchmarkMappedRamSnapshotWithoutMultifdLoading.png)
+
 ### Test 3: Mapped-RAM (with multifd)
 ```
 Mean                  : 13.526 s
@@ -432,6 +439,8 @@ Min / Max             : 13.269 s / 13.837 s
 Coefficient of Var    : 1.68%
 Successful runs       : 5/5
 ```
+
+![Mapped-RAM Snapshot With Multifd Benchmark](https://github.com/vididvidid/QEMU-TODO/blob/main/Snapshot/BenchmarkMappedRamSnapshotWithMultifdLoading.png)
 
 ### What I Noticed
 So you'll see that Test 2 is actually faster than Test 3, even though multifd should theoretically be better. But this is probably because of a bug in my code or some inconsistency in how postcopy works with multifd. The thing is, when VNC loads, it lags sometimes and the screen doesn't show up instantly. Since postcopy is so fast, the VM starts before VNC even displays anything, so it takes extra time for me to see the login screen and close the window. 
@@ -595,7 +604,7 @@ The file is stored sequentially - like you've got ram1, ram2, ram3, etc. You hav
 **Three ways:**
 
 1. Try loading it with mapped-ram off - if it throws an error, it's a mapped-ram file
-2. I created a Python script that'll check for you and tell you what type it is
+2. I created a Python script that'll check for you and tell you what type it is: [check_mapped_ram.py](https://github.com/vididvidid/QEMU-TODO/blob/main/utils/utils/check_mapped_ram.py)
 3. Mapped-ram files have three things internally:
    - "mapped-ram" written in binary (can't see it with vim)
    - A flag called `RAM_SAVE_FLAG_MAPPED_RAM`
@@ -650,7 +659,7 @@ That means we need to modify multifd to work atomically before they can actually
 
 I wrote a Python script to remove duplicate printf statements from the logs. Vim's `uniq` command helped too. Once I got most of the duplicates out, visual inspection of what remained helped me eliminate even more noise.
 
-(Python script available at: [link to clean.py])
+**Tool:** [clean.py](https://github.com/vididvidid/QEMU-TODO/blob/main/utils/utils/clean.py) - Script to deduplicate printf statements from log files
 
 ### My project roadmap
 
