@@ -25,6 +25,7 @@
   - [How QEMU guarantees multifd only reads RAM from mapped-ram](#how-qemu-guarantees-multifd-only-reads-ram-from-mapped-ram)
   - [How to translate a memory address into file offset for pread()](#how-to-translate-a-memory-address-into-file-offset-for-pread)
   - [What happens if the snapshot gets corrupted during load?](#what-happens-if-the-snapshot-gets-corrupted-during-load)
+- [Videos](#videos)
 
 ---
 
@@ -233,6 +234,8 @@ migrate "file:/home/kali/yoursnapshotname.bin"
 
 That's it, your snapshot is created.
 
+**See it in action:** [Creating the Normal Snapshot](https://youtu.be/YwQBGTtXCYE)
+
 ### Mapped-RAM Snapshot
 
 **Step 1:** Start QEMU with deferred incoming
@@ -267,6 +270,7 @@ migrate_set_compatibility multifd on
 migrate "file:/home/kali/yoursnapshotname.bin"
 ```
 
+**See it in action:** [Creating the Mapped-RAM Format Snapshot](https://youtu.be/sXFQr_QbcEg)
 
 ## Loading Snapshots
 
@@ -420,6 +424,7 @@ So you'll see that Test 2 is actually faster than Test 3, even though multifd sh
 
 You can check out the YouTube video I uploaded to see this happening in real time. That'll make it clearer why the timings are different from what you'd expect.
 
+**Watch the benchmark in action:** [Benchmarking of Snapshot Performance](https://youtu.be/HKbD-1bTRb8)
 
 ## Live Migration Experiments
 
@@ -479,6 +484,10 @@ You'll see the source keep printing while the destination screen stays black. On
 (qemu) migrate_set_parameter downtime-limit 10000
 ```
 
+**Videos:**
+- [Precopy Live Migration Failed (Network Too Slow)](https://youtu.be/XZrDKEk64Qc)
+- [Precopy Live Migration with Downtime Limit](https://youtu.be/y0oNx5YOHOE)
+
 ### Approach 2: Postcopy Migration
 
 **How it works:** This is where the magic happens. The source pauses immediately, CPU state moves to the destination, and the destination wakes up with zero RAM. When the destination tries to read a memory page, it pulls it from the source on-demand.
@@ -497,6 +506,8 @@ migrate_set_parameter max-bandwidth 1M
 migrate -d tcp:127.0.0.1:4444
 migrate_start_postcopy
 ```
+
+**Watch it in action:** [Postcopy Live Migration](https://youtu.be/qoGIOb3z9Ic)
 
 ### What This All Means
 
@@ -792,3 +803,16 @@ fail:
 ```
 
 So the VM doesn't try to be clever - it just exits with EXIT_FAILURE.
+
+---
+
+## Videos
+
+Here are all the videos from my experiments:
+
+1. **[Benchmarking of Snapshot Performance](https://youtu.be/HKbD-1bTRb8)** - Performance comparison of all three snapshot types
+2. **[Creating the Normal Snapshot](https://youtu.be/YwQBGTtXCYE)** - Step-by-step walkthrough of creating a normal snapshot
+3. **[Creating the Mapped-RAM Format Snapshot](https://youtu.be/sXFQr_QbcEg)** - How to create a mapped-RAM snapshot
+4. **[Precopy Live Migration Failed (Network Too Slow)](https://youtu.be/XZrDKEk64Qc)** - What happens when the network is too slow for precopy
+5. **[Precopy Live Migration with Downtime Limit](https://youtu.be/y0oNx5YOHOE)** - Precopy migration with the downtime-limit parameter set
+6. **[Postcopy Live Migration](https://youtu.be/qoGIOb3z9Ic)** - Live migration using postcopy method
