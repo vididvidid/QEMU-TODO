@@ -114,8 +114,9 @@ Goal: Handle massive device states and finalize the patch series.
 - **Name**: Yash Kumar Kasaudhan  
 - **University**: GLA University, Mathura (B.Tech Computer Science, Class of 2026)  
 - **Location**: Gonda, Uttar Pradesh, India  
-- **Email**: [Your Email]  
-- **GitHub**: [Your GitHub Link]  
+- **Email**: vididvidid@gmail.com
+- **GitHub**: https://github.com/vididvidid
+- **Linkedin**: https://www.linkedin.com/in/yash-kumar-kasaudhan/
 - **Timezone**: IST (UTC+5:30)  
 - **Commitment**: I will dedicate 35-40 hours per week to this project.  
 - **Experience**: Completed a Google Summer of Code project with The Linux Foundation (OpenPrinting). Contributed code to the Microsoft Terminal repository, Meta's Buck2 build system, and PDFio.
